@@ -26,7 +26,7 @@ SECRET_KEY = '1@64reo@)f@+@3r*b-9e5mwe0pnc$v60@kx^hry=dcp(n@_b74'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['second-first-time.uiiymfp7i7.us-east-2.elasticbeanstalk.com', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

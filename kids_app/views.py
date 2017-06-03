@@ -35,8 +35,10 @@ def qform(request):
 		qna = QnA(maps = Map,question = question,hint = hint,ques_no = qno,tags =tags)
 		qna.save()
 
+	map_names = ParentMap.objects.all()
+	context = {"map_names": map_names}
 	
-	return render(request,'dashboard/questionform.html')
+	return render(request,'dashboard/questionform.html', context)
 
 def index(request):
 	user_name= request.GET.get("username",None)
@@ -54,3 +56,10 @@ def getQues(request):
 		ques_hint={'ques':ques_s}
 		print ques_hint
 		return JsonResponse(ques_hint, safe=False)
+
+@login_required
+def dashboard(request):
+	user_name= request.user.username
+	name = request.user.first_name + request.user.last_name
+	context = {"name": name}
+	return render(request, 'dashboard/index.html', context)
