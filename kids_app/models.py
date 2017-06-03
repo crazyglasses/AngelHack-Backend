@@ -29,5 +29,3 @@ class QnA(models.Model):
 		self.tags = json.dumps(x)
 	def getfoo(self):
 		return json.loads(self.tags)
-	def __str__(self):
-		return self.question,self.hint

@@ -12,7 +12,8 @@ def getcall(username):
 	return maps
 
 def session_hit(mapname):
-	ques= models.QnA.objects.filter(maps__mapName=mapname)[0]
-	hint= models.QnA.objects.filter(maps__mapname=mapname)[1]
-	return ques,hints
+	ques= models.QnA.objects.filter(maps__mapName=mapname)
+
+	#hint= models.QnA.objects.filter(maps__mapName=mapname)[1]
+	return ques
 

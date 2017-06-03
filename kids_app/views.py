@@ -19,9 +19,8 @@ def index(request):
 def getQues(request):
 	map_name= request.GET.get("mapname",None)
 	if map_name != None:
-		ques= mymethods.session_hit(map_name)[0]
-		hint= mymethods.session_hit(map_name)[1]
+		ques= mymethods.session_hit(map_name)
 		ques_s = serializers.serialize("json", ques)
-		hint_s = serializers.serialize("json", hint)
-		ques_hint={'ques':ques_s,'hint':hint_s}
+		ques_hint={'ques':ques_s}
+		print ques_hint
 		return JsonResponse(ques_hint, safe=False)
