@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from .models import ParentMap
+from .models import ParentMap,QnA
 from django.contrib import admin
 
 # Register your models here.
@@ -10,3 +10,4 @@ class ResortAdmin(admin.ModelAdmin):
         obj.save()
 
 admin.site.register(ParentMap)
+admin.site.register(QnA)

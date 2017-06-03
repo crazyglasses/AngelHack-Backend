@@ -7,6 +7,36 @@ from . import mymethods
 from django.http import HttpResponse,JsonResponse
 
 from django.core import serializers
+from kids_app.models import ParentMap,QnA
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def Mapform(request):
+	if request.POST:
+		mapname= request.POST['MapName']
+		noofques = request.POST['ques']
+		user = request.user
+		obj = ParentMap(parent = user, mapName = mapname , no_of_ques= noofques)
+		obj.save()
+
+		
+	return render(request,'dashboard/mapform.html')
+
+@login_required
+def qform(request):
+	if request.POST:
+		mapname = request.POST['mapname']
+		Map = ParentMap.objects.get(mapName = mapname)
+		question = request.POST['question']
+		hint = request.POST['hint']
+ 		qno = request.POST['qno']
+		tags =request.POST['tags']
+		qna = QnA(maps = Map,question = question,hint = hint,ques_no = qno,tags =tags)
+		qna.save()
+
+	
+	return render(request,'dashboard/questionform.html')
 
 def index(request):
 	user_name= request.GET.get("username",None)
