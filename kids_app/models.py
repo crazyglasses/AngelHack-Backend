@@ -6,7 +6,8 @@ from django.db import models
 
 from django.contrib.auth.models import User
 # Create your models here.
-
+import os
+from django.conf import settings
 
 
 class ParentMap(models.Model):
@@ -29,3 +30,11 @@ class QnA(models.Model):
 		self.tags = json.dumps(x)
 	def getfoo(self):
 		return json.loads(self.tags)
+
+
+# def user_directory_path(instance, filename):
+#     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+#     return 'user_{0}/{1}'.format(instance.user.username, filename)
+
+class Save_an_incoming_image(models.Model):
+	image = models.ImageField(upload_to='images/', blank=True, null=True)
